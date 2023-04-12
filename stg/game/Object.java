@@ -16,6 +16,13 @@ public class Object {
 		x = spawnX;
 		y = spawnY;
 		vx = vy =0;
+		this.collide = true; 
+	}
+	public Object(float spawnX,float spawnY,boolean collide) {
+		x = spawnX;
+		y = spawnY;
+		vx = vy = 0;
+		this.collide  = collide;
 	}
 	/***************************************************/
 	//这里x,y不提供对应的set方法,需要改变这两个变量请使用move方法
@@ -41,6 +48,27 @@ public class Object {
 	}
 	public void setVy(float vy) {
 		this.vy = vy;
+	}
+	/**
+	*游戏采用圆形判定,size为物体半径
+	*/
+	private float size;
+	public float getSize() {
+		return size;
+	}
+	public void setSize(float size){
+		this.size = size;
+	}
+	//物体有无碰撞体积
+	private boolean collide;
+	public void setCollide(boolean collide) {
+		this.collide = collide;
+	}
+	public void setCollide() {
+		collide = !collide;
+	}
+	public boolean getCollide() {
+		return collide;
 	}
 	/***********************************************************/
 	/**
@@ -97,5 +125,17 @@ public class Object {
 		vx = (float) (v * Math.cos(angle));
 		vy = (float) (v * Math.sin(angle));
 	}
-	
+	/**
+	 * 检测物体与玩家是否有碰撞的方法
+	 * 若需判断物体间有无碰撞可重载该方法
+	 * @param player 玩家
+	 * @return 玩家和物体有无碰撞,有碰撞返回true,否则返回false
+	 * */
+	public boolean collide(Player player){
+		if((player.getX()-x)*(player.getX()-x)+(player.getY()-y)*(player.getY()-y) >= size+player.getSize() && this.collide){
+			return true;
+		}else{
+			return false;
+		}
+	}
 }
