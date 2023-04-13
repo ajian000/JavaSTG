@@ -24,6 +24,37 @@ public class Bullet extends Object {
 	public float getRox() {
 		return this.rox;
 	}
+	//子弹颜色
+	private String color;
+	public void setColor(String color) {
+		this.color = color;
+	}
+	public String getColor() {
+		return this.color;
+	}
+	//子弹种类
+	private String type;
+	public void setType(String type) {
+		this.type = type;
+	}
+	public String getType() {
+		return this.type;
+	}
 	/*******************************************************************************/
-	
+	/**
+	 * 子弹变换方法
+	 * @param type 变化后的类型
+	 * @param color 变化后的颜色
+	 * */
+	public void change(String type,String color) {
+		this.type = type;
+		this.color = color;
+	}
+	/**
+	 * 子弹的判定方法
+	 * 未实现
+	 * */
+	public boolean collide() {
+		return false;
+	}
 }
