@@ -87,10 +87,37 @@ public class Player extends Object implements Runnable{
 	/**
 	 * 记录玩家是否处于低速状态
 	 * */
-	private boolean slowMode = false;
-	/*
-	 *这里给子弹偏转角和弹速等变量留出空间 
+	private static boolean slowMode = false;
+	public boolean getSlowMode() {
+		return slowMode;
+	}
+	public void setSlowMode(boolean slowMode) {
+		this.slowMode = slowMode;
+	}
+	/**
+	 * 子弹的弹速
 	 * */
+	private static float[] bulletSpeed;
+	public void setBulletSpeed(float[] bulletSpeed) {
+		for(int i = 0;i < this.bulletSpeed.length;i++) {
+			this.bulletSpeed[i] = bulletSpeed[i];
+		}
+	}
+	public float[] getBulletSpeed(){
+		return bulletSpeed;
+	}
+	/**
+	 * 子弹速度角,特殊轨道子弹请使用Object类提供的moveTo方法
+	 * */
+	private static float[] bulletAng;
+	public void setBulletAng(float bulletAng[]) {
+		for(int i = 0;i < this.bulletAng.length;i++) {
+			this.bulletAng[i] = bulletAng[i];
+		}
+	}
+	public float[] getBulletAng() {
+		return bulletAng;
+	}
 	/************************************************************/
 	/**
 	 * 按键扫描方法
@@ -121,6 +148,9 @@ public class Player extends Object implements Runnable{
 			if(Key.skip) {
 				
 			}
+			if(Key.bonm) {
+				this.bomb();
+			}
 		}
 	}
 	/**
@@ -128,5 +158,9 @@ public class Player extends Object implements Runnable{
 	 * 请在设计自机时重写该方法
 	 * */
 	public void shoot() {}
-	
+	/**
+	 * bomb方法
+	 * 请在设计自机时重写该方法
+	 * */
+	public void bomb() {}
 }

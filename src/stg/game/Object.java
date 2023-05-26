@@ -69,7 +69,7 @@ public class Object {
 	}
 	public boolean getCollide() {
 		return collide;
-	}
+	}	
 	/***********************************************************/
 	/**
 	 * ÒÆ¶¯µ½Ä³Î»ÖÃ

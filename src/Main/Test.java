@@ -14,6 +14,17 @@ public class Test {
 		/*while(true) {
 			System.out.println(Ran.ranBoolean());
 		}*/
+/*			while(true) {
+				if(true) {
+					if(false) {
+						break;
+						System.out.println(1);
+					}
+				}
+			}
+			System.out.println(1);
+*/		
+		
 		Object obj = new Object(0, 0);
 		System.out.println(obj.getX());
 	}
